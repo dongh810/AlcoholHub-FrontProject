@@ -17,7 +17,7 @@
     <div class="closebuttondiv">
         <form action="" name="deleteReply" method="post">
             <button type="button" class="closebutton" onclick="deleteReplyCheck()">
-                <img src="C:\Users\Playdata\Downloads\AlcoholHub-Front_Project-master\AlcoholHub-Front_Project-master\ahub-project\src\assets\free-icon-close-button-61155 (1).png">
+                <img src="/Users/baekdonghyeon/Desktop/front project/ahub-project/src/assets/free-icon-close-button-61155 (1).png">
             </button>
         </form>
     </div>

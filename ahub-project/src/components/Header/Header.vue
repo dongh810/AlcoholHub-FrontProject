@@ -1,7 +1,7 @@
 <template>
     <header class="header">
         <div class="logo">
-            <img src="C:\Users\Playdata\Downloads\AlcoholHub-Front_Project-master\AlcoholHub-Front_Project-master\ahub-project\src\assets\purple.png" class="logoimage">
+            <img src="/Users/baekdonghyeon/Desktop/front project/ahub-project/src/assets/purple.png" class="logoimage">
         </div>
         <div id="menu">
             <ul>
