@@ -1,8 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// import axios from 'axios'
-
-// Vue.prototype.$axios = axios
+import axios from "axios";
 
 
-createApp(App).mount('#app')
+
+// createApp(App).mount('#app')
+
+const app = createApp(App);
+
+app.config.globalProperties.$axios = axios; 
+
+app.use(axios);
+app.mount('#app');

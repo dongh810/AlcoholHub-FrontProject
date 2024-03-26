@@ -33,6 +33,7 @@
     * {
 		margin: 0;
 		padding: 0;
+        font-family: 'GmarketSansMedium';
 	}
 
     .header {
@@ -50,16 +51,11 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 12px;
             font-style: bold;
             float: right;
             margin-top: 1.5%;
             margin-right: 2%;
-        }
-
-        .box {
-            width:510%;
-            height: 100px;
         }
 
         .logoimage {

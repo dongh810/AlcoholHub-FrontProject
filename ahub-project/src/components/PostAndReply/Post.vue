@@ -8,7 +8,7 @@
             <h2 class="boardtitle"> 간으로 써내려간 지난날의 1-10만원 와인</h2>
         </div>
         <div class="writerdiv">
-            <h3 class="writer">안경따거</h3>
+            <h3 class="writer"></h3>
         </div>
         <div class="datediv">
             <h3 class="date">2024.03.16 9:31:01</h3>
@@ -32,6 +32,32 @@
 
 <script setup>
     import Reply from './Reply.vue';
+    import axios from "axios";
+
+    import {ref} from "vue";
+
+    const post = ref(null);
+
+    const fetchPost = async () => {
+        try {
+            const response = await axios.get('http://localhost:8081/post');
+            if (response.data && Array.isArray(response.data) && response.data.length > 0) {
+                console.log(post.value = response.data[0]);
+                
+            } else {
+                console.error('게시글 데이터가 비어있습니다.');
+            }
+        } catch (error) {
+            console.error('데이터 로드 중 오류 발생:', error);
+        }
+    };
+
+    
+
+
+    
+
+    
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
 <script setup>
-    import Board from './components/BoardAndReply/Board.vue';
+    import Post from './components/PostAndReply/Post.vue';
     import Header from './components/Header/Header.vue';
     import Footer from './components/Footer/Footer.vue';
 </script>
@@ -9,7 +9,7 @@
         <Header/>
     </header>
 
-    <Board/>
+    <Post/>
 
     <footer>
         <Footer/>
