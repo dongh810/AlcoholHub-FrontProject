@@ -5,15 +5,11 @@
 </script>
 
 <template>
-    <header>
-        <Header/>
-    </header>
+        <Header></Header>
 
     <Post/>
 
-    <footer>
-        <Footer/>
-    </footer>
+        <Footer></Footer>
 </template>
 
 <style scoped>

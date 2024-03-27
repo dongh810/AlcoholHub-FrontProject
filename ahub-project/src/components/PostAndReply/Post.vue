@@ -4,21 +4,23 @@
             <h1 class="boardname">후기 게시판</h1>
             <hr class="boardtitleLine">
         </section>
-        <div class="boardtitlediv">
-            <h2 class="boardtitle"> {{posts.postTitle}}</h2>
-        </div>
-        <div class="writerdiv">
-            <h3 class="writer"></h3>
-        </div>
-        <div class="datediv">
-            <h3 class="date">{{posts.postDate}}</h3>
+        <div class="allboard">
+            <div class="boardtitlediv">
+                <h2 class="boardtitle"> {{ posts.result.postTitle }}</h2>
+            </div>
+            <div class="writerdiv">
+                <h3 class="writer">{{ posts.result.memberNickname }}</h3>
+            </div>
+            <div class="datediv">
+                <h3 class="date">{{posts.result.postDate}}</h3>
+            </div>
         </div>
         <hr class="titleLine">
         <div class="maincontent">
-            <p>
-                {{ posts.postContent }}
+            <p v-html="posts.result.postContent">
             </p>
         </div>
+        
 
         <Reply/>
     </div>
@@ -27,27 +29,26 @@
 <script setup>
     import Reply from './Reply.vue';
     import axios from "axios";
-    import { ref } from "vue";
+    import { ref, onBeforeMount } from "vue";
 
-    const posts = ref([]);
+    const posts = ref({
+        result: {}
+    });
 
-    const fetchPosts = (postId) => {
-        axios.get("http://localhost:8080/post?${postId}")
+    const fetchPosts = () => {
+        axios.get("http://localhost:8000/post/content/6")
         .then(response => {
-            posts.value = response.data[0];
+            posts.value = response.data;
+            console.log('post', posts);
+            console.log('post.result', posts.result);
+            console.log(response);
             console.log(posts.value);
-            console.log(posts.value.title);
+            console.log(posts.value.result.postTitle);
         })
     }
-
-    fetchPosts(2);
-
-    
-
-
-    
-
-    
+    onBeforeMount(() => {
+        fetchPosts();    
+    })
 </script>
 
 <style scoped>
@@ -98,22 +99,27 @@
             margin-top: 25px;
         }
 
+        .allboard {
+            display: flex;
+            flex-direction: rows;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
         .boardtitlediv {
             padding-left: 10px;
             padding-right: 10px;
             margin-left: 2%;
-            float: left;
+            width: 70%;
         }
 
         .writerdiv {
-            margin-left: 43%;
-            float:left;
+            width: 10%;
         }
 
         .datediv {
-            padding-right: 10px;
-            margin-right: 2%;
-            float:right;
+            width:20%;
+            margin-left:2%;
         }
 
         
@@ -124,6 +130,8 @@
             margin-right: 10%;
             margin-top: 3%;
         }
+
+        
 
         
 </style>

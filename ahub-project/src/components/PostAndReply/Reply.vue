@@ -3,24 +3,27 @@
         <h2 class="replytitle">댓글</h2>
     </div>
     <hr class="replyline">
-    <div class="replywriterdiv">
-        <p>포도나무지기</p>
+    <div class="allreply" v-for="reply in replys" :key="replys.replyId">
+        <div class="replywriterdiv">
+            <p>{{reply.memberNickname}}</p>
+        </div>
+        <div class="replycontentdiv">
+            <p>
+                {{reply.replyContent}}
+            </p>
+        </div>
+        <div class="replydatediv">
+            <p> {{ reply.replyDate }}</p>
+        </div>
+        <div class="closebuttondiv">
+            <form action="" name="deleteReply" method="post">
+                <button type="button" class="closebutton" onclick="deleteReplyCheck()">
+                    <img src="/Users/baekdonghyeon/Desktop/front project/ahub-project/src/assets/free-icon-close-button-61155 (1).png">
+                </button>
+            </form>
+        </div>
     </div>
-    <div class="replycontentdiv">
-        <p>
-            와 정말 맛있겠네요, 저도 이번 주말에 도전해봐야 할것 같습니다!
-        </p>
-    </div>
-    <div class="replydatediv">
-        <p>2024.03.16 10:29:08</p>
-    </div>
-    <div class="closebuttondiv">
-        <form action="" name="deleteReply" method="post">
-            <button type="button" class="closebutton" onclick="deleteReplyCheck()">
-                <img src="/Users/baekdonghyeon/Desktop/front project/ahub-project/src/assets/free-icon-close-button-61155 (1).png">
-            </button>
-        </form>
-    </div>
+    
     <hr class="replyregistline">
     <div class="registreplywriterdiv">
         <span>안경따거</span>
@@ -38,7 +41,35 @@
 </template>
 
 <script setup>
+    import axios from "axios";
+    // import { ref } from "vue";
 
+    // const replys = ref([]);
+
+    // const fetchPosts = () => {
+    //     axios.get("http://localhost:8000/reply/board/replies/6")
+    //     .then(response => {
+    //         replys.value = response.data;
+    //         console.log(replys.value);
+    //         console.log(replys.value[0].replyContent);
+    //     })
+    // }
+
+    // fetchPosts();
+    import { onMounted, ref } from "vue";
+
+    // 초기 데이터 생성
+    const replys = ref([]);
+
+    // 마운트 시점에 데이터 호출
+    onMounted(async () =>{
+        axios.get("http://localhost:8000/reply/board/replies/6")
+        .then(response => {
+            replys.value = response.data;
+            console.log(replys.value);
+            console.log(replys.value[0].replyContent);
+        })
+    });
 </script>
 
 <style scoped>
@@ -103,35 +134,40 @@
         }
 
         .replywriterdiv {
-            margin-top:2%;
             padding-left: 10px;
             padding-right: 10px;
-            margin-left: 2%;
-            float: left;
+            margin-left: 3%;
+            width: 10%;
         }
 
         .replycontentdiv {
-            margin-top:2%;
             padding-left: 10px;
             padding-right: 10px;
-            margin-left: 2%;
-            float: left;
+            margin-left: 10%;
+            width: 20%;
+        }
+
+        .replydatediv {
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: 30%;
+            width: 15%;
         }
 
         .closebuttondiv {
-            margin-top:2%;
+            margin-top:1%;
             padding-left: 10px;
             padding-right: 10px;
-            margin-right: 5%;
-            float: right;
+            margin-left: 2%;
+            width: 2%;
         }
-        
-        .replydatediv {
-            margin-top:2%;
-            padding-left: 10px;
-            padding-right: 10px;
-            margin-left: 22%;
-            float: left;
+
+        .allreply {
+            display: flex;
+            flex-direction: rows;
+            justify-content: flex-start;
+            width: 100%;
+            font-size:12px;
         }
 
         .registreplywriterdiv{
