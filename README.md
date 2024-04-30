@@ -34,7 +34,6 @@
 
 ![image](https://github.com/beyond-sw-camp/be04-3rd-TeamPhoenix-ahub/assets/108782390/ede2047d-ed89-405b-ae9f-a606f0c043c9)
 
-
 <br>
 
 # 3. 와이어 프레임 및 기능 명세서, 화면 설계서
